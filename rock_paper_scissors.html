@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+    </head>
+
+    <body>
+        <script>
+
+            function computerPlay() {
+                computerPick = Math.floor(Math.random() * 3)
+                if (computerPick === 0) {
+                    return "rock";
+                }
+                else if (computerPick === 1) {
+                    return "paper";
+                }
+                else if (computerPick === 2) {
+                    return "scissor";
+                }
+            }
+
+            function playRound(playerSelection, computerSelection, playerScore, computerScore) {
+                playerSelection = playerSelection.toLowerCase();
+                if (playerSelection === computerSelection) {
+                    return alert("It's a tie! Play again.");
+                }
+                else if (playerSelection === "scissor" && computerSelection === "rock") {
+                    computerScore += 1;
+                    return alert("You lose! Rock beats scissor.");
+                }
+                else if (playerSelection === "scissor" && computerSelection === "paper") {
+                    playerScore += 1;
+                    return alert("You win! Scissor beats paper.");
+                }
+                else if (playerSelection === "paper" && computerSelection === "rock") {
+                    playerScore += 1;
+                    return alert("You win! Paper beats rock.");
+                }
+                else if (playerSelection === "paper" && computerSelection === "scissor") {
+                    computerScore += 1;
+                    return alert("You lose! Scissor beats paper.");
+                }
+                else if (playerSelection === "rock" && computerSelection === "paper") {
+                    computerScore += 1;
+                    return alert("You lose! Paper beats rock.");
+                }
+                else if (playerSelection === "rock" && computerSelection === "scissor") {
+                    playerScore += 1;
+                    return alert("You win! Rock beats scissor.");
+                }
+            }
+
+            function game() {
+                let playerScore = 0;
+                let computerScore = 0;
+
+                let games = 0;
+
+                while (games < 6) {
+                    playerSelection = prompt("Rock, Paper, or Scissors?");
+                    computerSelection = computerPlay();
+                    playRound(playerSelection, computerSelection, playerScore, computerScore);
+                    games += 1;
+                }
+                if (playerScore > computerScore) {
+                    return alert("Congratulations, you won!");
+                }
+                else {
+                    return alert("Too bad, you lost.");
+                }
+            }
+
+            game();
+
+        </script>
+    </body>
+</html>
